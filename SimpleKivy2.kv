@@ -3,7 +3,7 @@
 ScreenManagement:
 	transition: FadeTransition()
 	MainScreen:
-	AnotherScreen:
+	WebDevScreen:
 <Button>:
     font_name: "ufonts.com_swiss911-ucm-bt.ttf"
 
@@ -16,23 +16,35 @@ ScreenManagement:
             source: "lights.png"
 	FloatLayout:
 	Button:
-		on_release: app.root.current = "other"
-		pos_hint: {"right":0.3, "top":1}
-		text: "Next Screen"
+		on_release: app.root.current = "WebDev"
+		pos_hint: {"right":0.21, "top":.3}
+		text: "WEBDEV"
 		font_size: 35
 		size_hint: 0.3,0.1
 		background_color: 0, 0, 0, 0
 
-<AnotherScreen>:
-	name: "other"
-
+<WebDevScreen>:
+	name: "WebDev"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: "outreach.fw.png"
 	FloatLayout:
 		Button:
 			color: 0,1,0,1
 			font_size: 35
 			size_hint: 0.3,0.1
-			text: "Back Home"
-			on_release: app.root.current = "main"
+			text: "HOME"
+			on_release: app.btnrun()
 			pos_hint: {"right":1, "top":1}
 			background_color: 0, 0, 0, 0
 
+		Button:
+			color: 0,1,0,1
+			font_size: 35
+			size_hint: 0.3,0.1
+			text: "MAIN SCREEN"
+			on_release: app.root.current = "main"
+			pos_hint: {"right":.21, "top":.3}
+			background_color: 0, 0, 0, 0
