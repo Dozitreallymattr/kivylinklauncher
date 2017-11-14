@@ -1,7 +1,7 @@
 from kivy.app import App
 # kivy.require("1.8.0")
 from kivy.lang import Builder
-from kivy.uix.screenmanager import ScreenManager, Screen, FadeTransition
+from kivy.uix.screenmanager import ScreenManager, Screen, FadeTransition, NoTransition
 from kivy.uix.label import Label
 from kivy.clock import Clock
 import time
@@ -22,14 +22,12 @@ class ScreenManagement(ScreenManager):
 
 presentation = Builder.load_file("SimpleKivy2.kv")
 
-
 class MainApp(App):
     def build(self):
         return presentation
 
     def btnrun(self):
         print ("testing")
-
 
 if __name__ == "__main__":
     MainApp().run()

@@ -1,11 +1,14 @@
 #: import FadeTransition kivy.uix.screenmanager.FadeTransition
+#: import NoTransition kivy.uix.screenmanager.NoTransition
 
 ScreenManagement:
-	transition: FadeTransition()
+	transition: NoTransition()
 	MainScreen:
 	WebDevScreen:
+
 <Button>:
     font_name: "ufonts.com_swiss911-ucm-bt.ttf"
+    background_color: 0, 0, 0, 0
 
 <MainScreen>:
 	name: "main"
@@ -13,7 +16,7 @@ ScreenManagement:
         Rectangle:
             pos: self.pos
             size: self.size
-            source: "lights.png"
+            source: "outreach.fw.png"
 	FloatLayout:
 	Button:
 		on_release: app.root.current = "WebDev"
@@ -21,7 +24,7 @@ ScreenManagement:
 		text: "WEBDEV"
 		font_size: 35
 		size_hint: 0.3,0.1
-		background_color: 0, 0, 0, 0
+		color: 0,0,0,1
 
 <WebDevScreen>:
 	name: "WebDev"
@@ -29,22 +32,31 @@ ScreenManagement:
         Rectangle:
             pos: self.pos
             size: self.size
-            source: "outreach.fw.png"
+            source: "lights.png"
+
 	FloatLayout:
+	    # Buttons to change screens
 		Button:
-			color: 0,1,0,1
+			color: 0,0,0,1
 			font_size: 35
 			size_hint: 0.3,0.1
-			text: "HOME"
-			on_release: app.btnrun()
-			pos_hint: {"right":1, "top":1}
-			background_color: 0, 0, 0, 0
+			text: "MAIN"
+			on_release: app.root.current = "main"
+			pos_hint: {"right":.21, "top":.88}
 
 		Button:
+			color: 1,1,1,1
+			font_size: 35
+			size_hint: 0.3,0.1
+			text: "WEBDEV"
+			on_release: app.root.current = "WebDev"
+			pos_hint: {"right":.21, "top":.3}
+
+		# Buttons that issue commands
+		Button:
 			color: 0,1,0,1
 			font_size: 35
 			size_hint: 0.3,0.1
-			text: "MAIN SCREEN"
-			on_release: app.root.current = "main"
-			pos_hint: {"right":.21, "top":.3}
-			background_color: 0, 0, 0, 0
+			text: "COMMAND"
+			on_release: app.btnrun()
+			pos_hint: {"right":1, "top":1}
